@@ -1,0 +1,152 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Make page take full height */ 
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+/* Center everything on screen */
+body {
+   
+
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+
+    /* Gradient background */
+    background: linear-gradient(120deg, #060606 0%, #3615157b 100%);
+    /* Slight blur behind content for glass effect */
+    backdrop-filter: blur(10px);
+
+
+
+}
+
+/* Main container box */
+.container {
+   
+    /* background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 800px;    */
+    
+    background: rgba(255, 255, 255, 0.15); /* transparent white glass look */
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px); /* glass blur */
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 30px;
+    width: 90%;
+    max-width: 800px;
+
+
+}
+
+/* Heading */
+h1 {
+    color: #f8fff4;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Forms */
+form {
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;  /* responsive banata hai */
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Inputs */
+input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    flex: 1 1 150px;   /* responsive input width */
+}
+
+/* Buttons */
+button {
+    padding: 8px 16px;
+    background-color: #28a745;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* ✅ RESPONSIVENESS PART */ 
+
+/* Mobile view */
+@media (max-width: 300px) {
+    .container {
+        padding: 20px;
+    }
+
+    form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    input, button {
+        width: 100%;
+    }
+
+    table, th, td {
+        font-size: 12px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+}
+
+/* Tablet view */
+@media (max-width: 900px) {
+    table, th, td {
+        font-size: 13px;
+    }
+}
+

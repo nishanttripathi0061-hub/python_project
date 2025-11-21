@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Inventory</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Product Inventory</h1>
+
+        <!-- Add or Update Product -->
+        <form action="/add" method="post">
+            <input type="text" name="id" placeholder="Product ID" value="{{ edit_product.product_id if edit_product else '' }}" required>
+            <input type="text" name="name" placeholder="Product Name" value="{{ edit_product.name if edit_product else '' }}" required>
+            <input type="text" name="price" placeholder="Price" value="{{ edit_product.price if edit_product else '' }}" required>
+            <input type="text" name="quantity" placeholder="Quantity" value="{{ edit_product.quantity if edit_product else '' }}" required>
+            <button type="submit">{{ 'Update' if edit_product else 'Add' }} Product</button>
+        </form>
+
+        <!-- Search Product -->
+        <form action="/search" method="post">
+            <input type="text" name="term" placeholder="Search by ID or Name">
+            <button type="submit">Search</button>
+        </form>
+
+        
+        <!-- Products Table -->
+        <table>
+            <tr>
+                <th>ID</th><th>Name</th><th>Price</th><th>Quantity</th><th>Actions</th>
+            </tr>
+            {% for product in products %}
+                <tr>
+                    <td>{{ product.product_id }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.quantity }}</td>
+                <td>
+            <!-- Update form -->
+                    <form action="/update/{{ product.product_id }}" method="post" style="display:inline-block;">
+                        <input type="text" name="name" placeholder="New Name">
+                        <input type="text" name="price" placeholder="New Price">
+                        <input type="text" name="quantity" placeholder="New Qty">
+                        <button type="submit">Update</button>
+                    </form>
+
+            <!-- Delete button -->
+                <a href="/delete/{{ product.product_id }}">
+                    <button type="button">Delete</button>
+                </a>
+                </td>
+                </tr>
+            {% else %}
+            <tr>
+                <td colspan="5">No products found.</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+</body>
+</html>
